@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LiamLG's Channel</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #fff;
+    color: #333;
+  }
+  /* Top bar */
+  header {
+    background: #cc0000;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    color: white;
+  }
+  header .logo {
+    font-weight: bold;
+    font-size: 22px;
+    letter-spacing: -1px;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    color: white;
+  }
+  header .logo img {
+    height: 32px;
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+  header .search {
+    flex: 1;
+    margin-left: 20px;
+  }
+  header .search input {
+    width: 100%;
+    max-width: 600px;
+    padding: 6px 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 2px;
+  }
+  /* Sidebar */
+  nav {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    width: 200px;
+    bottom: 0;
+    background: #f9f9f9;
+    border-right: 1px solid #ddd;
+    padding-top: 12px;
+    box-sizing: border-box;
+  }
+  nav a {
+    display: block;
+    padding: 10px 16px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  nav a:hover {
+    background: #e7e7e7;
+  }
+  /* Main content */
+  main {
+    margin-left: 200px;
+    padding: 16px;
+  }
+  main h1 {
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  .videos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+    gap: 16px;
+  }
+  .video {
+    cursor: pointer;
+  }
+  .video img {
+    width: 100%;
+    border-radius: 4px;
+    background: #000;
+  }
+  .video-title {
+    font-weight: 600;
+    margin: 8px 0 4px;
+    font-size: 16px;
+    color: #111;
+  }
+  .video-info {
+    font-size: 13px;
+    color: #666;
+  }
+  /* Responsive for smaller screens */
+  @media (max-width: 600px) {
+    nav {
+      position: relative;
+      width: 100%;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    nav a {
+      display: inline-block;
+      padding: 12px 16px;
+    }
+    main {
+      margin-left: 0;
+      padding: 12px;
+    }
+    .videos {
+      grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
+      gap: 12px;
+    }
+  }
+  /* Modal styles */
+  #videoModal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+    align-items: center;
+    justify-content: center;
+  }
+  #videoModalContent {
+    position: relative;
+    width: 80%;
+    max-width: 900px;
+    background: #000;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  }
+  #videoModal iframe {
+    width: 100%;
+    height: 500px;
+    border: none;
+    border-radius: 8px;
+  }
+  #videoModalClose {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="liamtube.png" alt="LiamTube Logo" />
+    
+  </div>
+  <div class="search">
+    <input type="search" placeholder="Search" />
+  </div>
+</header>
+
+<nav>
+  <a href="#">Home</a>
+  <a href="#">Trending</a>
+  <a href="#">Subscriptions</a>
+  <a href="#">Library</a>
+  <a href="#">History</a>
+  <a href="#">Your Videos</a>
+  <a href="https://discord.gg/YOURDISCORD" target="_blank">Discord</a>
+  <a href="https://drive.google.com/drive/folders/YOURFOLDER" target="_blank">Google Drive</a>
+</nav>
+
+<main>
+  <h1>Your Videos</h1>
+  <div class="videos">
+    <div class="video" data-video-url="https://files.catbox.moe/iq5kg4.mp4" onclick="openVideo(this)">
+      <img src="https://i.ytimg.com/vi/02AIvYlhcx4/hqdefault.jpg" alt="Video 1" />
+      <div class="video-title">[YTP TENNIS] Round of a tennis using a Windows 7 sample video as the source made on Windows 7</div>
+      <div class="video-info">0 views • 0 days ago</div>
+    </div>
+
+    <div class="video" data-video-url="https://files.catbox.moe/n060fr.mp4" onclick="openVideo(this)">
+      <img src="https://i.ytimg.com/vi/t_V7V36YgcU/hqdefault.jpg" alt="Video 2" />
+      <div class="video-title">Game Board's Editing Clanet</div>
+      <div class="video-info">0 views • 0 days ago</div>
+    </div>
+
+    <!-- Add more video blocks here -->
+  </div>
+</main>
+
+<!-- Modal -->
+<div id="videoModal" onclick="closeVideo(event)">
+  <div id="videoModalContent">
+    <span id="videoModalClose" onclick="closeVideo(event)">&times;</span>
+    <iframe id="videoFrame" src="" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script>
+  function openVideo(element) {
+    const url = element.getAttribute('data-video-url');
+    const modal = document.getElementById('videoModal');
+    const iframe = document.getElementById('videoFrame');
+    iframe.src = url;
+    modal.style.display = 'flex';
+  }
+
+  function closeVideo(event) {
+    if(event.target.id === 'videoModal' || event.target.id === 'videoModalClose') {
+      const modal = document.getElementById('videoModal');
+      const iframe = document.getElementById('videoFrame');
+      iframe.src = '';
+      modal.style.display = 'none';
+    }
+  }
+</script>
+
+</body>
+</html>
